@@ -279,9 +279,7 @@
         </div>
         <div class="clearfix"></div>
         <h4>Find the <strong>Address</strong></h4>
-        <iframe class="google-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA&amp;sll=47.605288,-122.329296&amp;sspn=0.008999,0.016544&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=7&amp;iwloc=A&amp;output=embed"></iframe>
-        <br />
-        <small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA&amp;sll=47.605288,-122.329296&amp;sspn=0.008999,0.016544&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=7&amp;iwloc=A">View Larger Map</a></small> </div>
+       <div class="google-map4" id="myMap" style="position:relative;"></div> </div>
         
     </div>
     
@@ -365,18 +363,7 @@
 	</div>
     </div><!-- end site info -->
     
-    <div class="one_fourth last animate" data-anim-type="fadeInUp">
-        
-        <h4>Flickr Photos</h4>
-        
-        <div id="flickr_badge_wrapper">
-            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=h&amp;source=user&amp;user=93382411%40N07"></script>     
-        </div>
-        
-    </div><!-- end flickr -->
-    
-    
-</div>
+
 </div><!-- end footer -->
 
 <div class="clearfix"></div>
@@ -554,7 +541,36 @@
 <script type="text/javascript" src="js/lightbox/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/lightbox/custom.js"></script>
 
+<!-- map -->
+    <script type="text/javascript" src="http://dev.ditu.live.com/mapcontrol/mapcontrol.ashx?v=6.1"></script>
 
+    <!-- jquery bingmap -->
+    <script type="text/javascript">
+        var map = null;
+
+        var latLon = new VELatLong(31.2188086028, 121.4390980466);
+        var selStyle = VEMapStyle.Aerial;
+        var selMode = VEMapMode.Mode2D;
+        var zoom = 17;
+        var fixed = false;
+        var showSwitch = true;
+
+        function AddPushpin() {
+            var shape = new VEShape(VEShapeType.Pushpin, latLon);
+            shape.SetTitle('上海扬阳电子科技有限公司');
+            shape.SetDescription('上海市静安区延安西路358号24楼');
+            map.AddShape(shape);
+        }
+
+        function GetMap() {
+            map = new VEMap('myMap');
+            map.LoadMap(latLon, zoom, selStyle, fixed, selMode, showSwitch);
+            AddPushpin();
+        }
+        /*$(function () {            
+            GetMap();
+        })*/
+    </script>
 
 </body>
 </html>
